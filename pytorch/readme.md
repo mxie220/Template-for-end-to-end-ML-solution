@@ -58,5 +58,21 @@ from torchtext.datasets import text_classification
 print("Successfully imported some datasets from TorchText.")
 ```
 
+TorchText has a couple of datasets but I'm just going to bring the AG_NEWS dataset in by running the following in another cell: 
+
+```python 
+# Creating a folder called 'data'
+import os
+if not os.path.isdir('./.data'):
+    os.mkdir('./.data')
+    
+# Specifying how to break up the dataset into n-words 
+NGRAMS = 2
+
+# Load the training dataset and testing dataset
+train_dataset, test_dataset = text_classification.DATASETS['AG_NEWS'](
+    root='./.data', ngrams=NGRAMS, vocab=None)
+```
+
 
 
