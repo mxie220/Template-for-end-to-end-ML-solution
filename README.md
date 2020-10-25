@@ -8,13 +8,27 @@ ________________________________________________________________________________
 
 The tutorial is split into 3 sections, the frontend tier with React, the middle tier with Django, the backend tier with Pytorch. Each section takes you through a simple tutorial on how to leverage open-source technologies to build an end-to-end machine learning solution. For the purposes of this tutorial, we will show you how to build an application that can classify texts but the aim of this tutorial is to act as a template for any machine learning solutions, models, and packages that can be easily consumed by applications. 
 
-### Part 1: React App
+## Part 1: React App
+
+To create and start your React App, do the following steps below:
+
+### npx create-react-app my-app
+### cd my-app
+### npm start
+
+## About React JS more in detail
+ JavaScript build toolchain typically consists of:
+- A package manager, such as Yarn or npm. It lets you take advantage of a vast ecosystem of third-party packages, and easily install or update them.
+- A bundler, such as webpack or Parcel. It lets you write modular code and bundle it together into small packages to optimize load time.
+- A compiler such as Babel. It lets you write modern JavaScript code that still works in older browsers.
+
+**NOTE:** If you've previously installed create-react-app globally via npm install -g create-react-app, we recommend you uninstall the package using npm uninstall -g create-react-app or yarn global remove create-react-app to ensure that npx always uses the latest version.
+
+
+## Part 2: Django APIs
 ...
 
-### Part 2: Django APIs
-...
-
-### Part 3: PyTorch Model
+## Part 3: PyTorch Model
 ...
 
 ___________________________________________________________________________________________________________________________________________________________________________________
