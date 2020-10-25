@@ -1,6 +1,20 @@
-# Facebook Developer Circles Challenge - SVM Django Rest API framework
+# Facebook Developer Circles Challenge - Template to build an end-to-end machine learning solution
 
-## PyTorch Tutorial as listed below
+#### Team: Michelle Xie, Victor Livingstone, Sirani McNeill, Adarsh Vulli
+___________________________________________________________________________________________________________________________________________________________________________________
+
+## How to use this guide: 
+
+The tutorial is split into 3 sections, the frontend tier with React, the middle tier with Django, the backend tier with Pytorch. Each section takes you through a simple tutorial on how to leverage open-source technologies to build an end-to-end machine learning solution. For the purposes of this tutorial, we will show you how to build an application that can classify texts but the aim of this tutorial is to act as a template for any machine learning solutions, models, and packages that can be easily consumed by applications. 
+
+### Part 1: React App
+
+### Part 2: Django APIs
+
+### Part 3: PyTorch Model
+
+
+___________________________________________________________________________________________________________________________________________________________________________________
 
 **NOTE** Ensure you have python interpreter in your system. visit https://www.python.org/downloads/
 
