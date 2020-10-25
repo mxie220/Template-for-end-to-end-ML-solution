@@ -9,7 +9,12 @@ ________________________________________________________________________________
 The tutorial is split into 3 sections, the frontend tier with React, the middle tier with Django, the backend tier with Pytorch. Each section takes you through a simple tutorial on how to leverage open-source technologies to build an end-to-end machine learning solution. For the purposes of this tutorial, we will show you how to build an application that can classify texts but the aim of this tutorial is to act as a template for any machine learning solutions, models, and packages that can be easily consumed by applications. 
 
 ### Part 1: React App
-...
+
+To create and start your React App, do the following below:
+
+## npx create-react-app my-app
+## cd my-app
+## npm start
 
 ### Part 2: Django APIs
 ...
