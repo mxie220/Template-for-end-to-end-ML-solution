@@ -74,5 +74,84 @@ train_dataset, test_dataset = text_classification.DATASETS['AG_NEWS'](
     root='./.data', ngrams=NGRAMS, vocab=None)
 ```
 
+## Building the model 
+
+Once we have loaded our datasets, we want to start building out the model which we will then train our data on. We'll start by importing the neural network modules from PyTorch: 
+
+```python 
+# Import the neural network package from PyTorch 
+import torch.nn as nn
+```
+
+We also need to import the functional module which contains all the functions in the torch.nn library:
+
+```python 
+# Import the functional module from torch.nn
+import torch.nn.functional as F
+```
+Now we create a class called TextSentiment. 
+Within this class, we want to initiate a few things like the embedding. An embedding is essentially these vectors you can use to represent items that share similarities with each other e.g. let's imagine a group of words and let's say these words are reprsented by A, B, C, and D. 
+
+How do we determine if word A is closer to word B or word C or word D? 
+
+We map its features into vectors that span over multiple dimensions (these are called tensors) we can use embeddings to find which words share the most similarities across all its dimensions. Anyway, an EmbeddingBag in PyTorch allows you to find the sum or the mean of all these embeddings. 
+
+We also need to initalize a linear transformation which is a function that allows our model to learn the weights between the embeddings and map it to output classes or labels.
+
+The init_weights method initalizes some random weights at the start (which we can then use the model to learn as we do our training).
+
+The forward method is what's called forward propagation in Machine Learning. It takes some input data and feeds it forward into the next layer of the neural network. 
+```python
+# Creating a class called TextSentiment that takes in the neural network module from Pytorch.
+class TextSentiment(nn.Module):
+    def __init__(self, vocab_size, embed_dim, num_class):
+        super().__init__()
+        # The EmbeddingBag module finds the sum or the mean of all the embeddings.
+        # An embedding allows you to map low-dimensional real vectors that can represent each words to other words that are similar. 
+        self.embedding = nn.EmbeddingBag(vocab_size, embed_dim, sparse=True)
+        # This does a Linear Transformation which allows the model to learn the weights between the embeddings and maps it to an output class
+        self.fc = nn.Linear(embed_dim, num_class)
+        self.init_weights()
+
+    def init_weights(self):
+        # intialization range set at 0.5
+        initrange = 0.5
+        self.embedding.weight.data.uniform_(-initrange, initrange)
+        self.fc.weight.data.uniform_(-initrange, initrange)
+        self.fc.bias.data.zero_()
+
+    # This is the forward propagation which essentially feeds input data into each layer of the model 
+    def forward(self, text, offsets):
+        embedded = self.embedding(text, offsets)
+        return self.fc(embedded)
+```
+
+The next section is just defining some variables which we will pass into our model as parameters:
+```python
+VOCAB_SIZE = len(train_dataset.get_vocab())
+EMBED_DIM = 32
+NUM_CLASS = len(train_dataset.get_labels())
+model = TextSentiment(VOCAB_SIZE, EMBED_DIM, NUM_CLASS)
+
+print("The vocabulary size is: ", VOCAB_SIZE)
+print("The number of classes is: ", NUM_CLASS)
+```
 
 
+```python
+def generate_batch(batch):
+    # A tensor is used to represent n-Dimensions of features. It looks like a matrix but it's not a matrix, a matrix is simply used to visualize a tensor. 
+    # The first part of the entry is the class label (e.g. what type of news article).
+    label = torch.tensor([entry[0] for entry in batch])
+    # The second part of the entry is the text. 
+    text = [entry[1] for entry in batch]
+    # These are the offset values in storage which indicates where the tensors start from.
+    offsets = [0] + [len(entry) for entry in text]
+    
+    # torch.Tensor.cumsum returns a cumulative sum of all the elements in the dimension.
+    offsets = torch.tensor(offsets[:-1]).cumsum(dim=0)
+    
+    # torch.cat concatenates whatever you give it together. 
+    text = torch.cat(text)
+    return text, offsets, label
+```
