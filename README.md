@@ -29,8 +29,7 @@ To create and start your React App, do the following steps below:
 ...
 
 ## Part 3: PyTorch Model
-...
-
+Install the required dependences for the pytorch! whether it may be for local or through the colab! and swe can use the text classifier using pytorch
 ___________________________________________________________________________________________________________________________________________________________________________________
 
 **NOTE** Ensure you have python interpreter in your system. visit https://www.python.org/downloads/
