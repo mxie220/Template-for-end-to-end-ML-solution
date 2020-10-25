@@ -10,11 +10,14 @@ The tutorial is split into 3 sections, the frontend tier with React, the middle 
 
 ## Part 1: React App
 
-To create and start your React App, do the following below:
+To create and start your React App, do the following steps below:
+
+background-color: #f1f8ff, $bg-blue-light
 
 ### npx create-react-app my-app
 ### cd my-app
 ### npm start
+
 
 ## Part 2: Django APIs
 ...
