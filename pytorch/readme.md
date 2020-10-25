@@ -127,6 +127,7 @@ class TextSentiment(nn.Module):
 ```
 
 The next section is just defining some variables which we will pass into our model as parameters:
+
 ```python
 VOCAB_SIZE = len(train_dataset.get_vocab())
 EMBED_DIM = 32
@@ -137,7 +138,9 @@ print("The vocabulary size is: ", VOCAB_SIZE)
 print("The number of classes is: ", NUM_CLASS)
 ```
 
+According to the PyTorch tutorial documentation, the generate_batch function is used to generate batches of data and offsets. Let's take a more in-depth look at what it actually does. 
 
+The function takes in an argument called 'batch' and batch has several entries. Running through each entry in the batch which looks like some form of array that can be accessed by its index. The first part of every entry (at index = 0), 
 ```python
 def generate_batch(batch):
     # A tensor is used to represent n-Dimensions of features. It looks like a matrix but it's not a matrix, a matrix is simply used to visualize a tensor. 
